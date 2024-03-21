@@ -40,6 +40,6 @@ jobs:
         run: |
           /usr/bin/docker exec -u root postgres apt update 
           /usr/bin/docker exec -u root postgres apt install -y make gcc wget postgresql-server-dev-15 
-          /usr/bin/docker exec -u root postgres wget https://github.com/pgpartman/pg_partman/archive/refs/tags/v4.4.0.tar.gz && pwd && ls -al
+          /usr/bin/docker exec -u root postgres wget https://github.com/pgpartman/pg_partman/archive/refs/tags/v4.4.0.tar.gz && tar -xzvf v4.4.0.tar.gz && ls -al
           /usr/bin/docker exec -u root postgres pwd && ls -al && tar -xzvf v4.4.0.tar.gz -C /pg_partman-4.4.0
           /usr/bin/docker exec -u root postgres pwd && ls -al && cd /pg_partman-4.4.0 && make install
