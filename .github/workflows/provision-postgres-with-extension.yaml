@@ -44,3 +44,9 @@ jobs:
           /usr/bin/docker exec -u root -w /partman postgres wget https://github.com/pgpartman/pg_partman/archive/refs/tags/v4.4.0.tar.gz  
           /usr/bin/docker exec -u root -w /partman postgres tar -xzvf v4.4.0.tar.gz && ls 
           /usr/bin/docker exec -u root -w /partman/pg_partman-4.4.0 postgres make install
+
+      - name: Create Partman Extension
+        shell: bash
+        run: |
+          psql -h localhost -U postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS pg_partman WITH SCHEMA partman;"
+          psql -h localhost -U postgres -d postgres -c "\dx+"
