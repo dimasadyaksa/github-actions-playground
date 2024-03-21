@@ -42,4 +42,4 @@ jobs:
           /usr/bin/docker exec -u root postgres apt install -y make gcc wget 
           /usr/bin/docker exec -u root postgres mkdir -p ~/partman 
           /usr/bin/docker exec -u root postgres wget https://github.com/pgpartman/pg_partman/archive/refs/tags/v4.4.0.tar.gz -O ~/partman/v4.4.0.tar.gz  
-          /usr/bin/docker exec -u root postgres tar -xzvf ~/partman/v4.4.0.tar.gz && ls ~/partman && cd ~/partman/pg_partman-4.4.0/ && make install
+          /usr/bin/docker exec -u root postgres tar -xzvf ~/partman/v4.4.0.tar.gz && make install
