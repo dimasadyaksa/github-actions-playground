@@ -38,8 +38,8 @@ jobs:
       - name: Install Partman Extension
         shell: bash
         run: |
-          /usr/bin/docker exec postgres \
-          sudo apt update && sudo apt install -y make gcc wget postgresql-server-dev-14 && \
+          /usr/bin/docker exec -u root postgres \
+          apt update && apt install -y make gcc wget postgresql-server-dev-14 && \
           wget https://github.com/pgpartman/pg_partman/archive/refs/tags/v4.4.0.tar.gz && \
           tar -xzvf v4.4.0.tar.gz && \
           cd pg_partman-4.4.0 && \
