@@ -20,4 +20,4 @@ jobs:
         run: |
           echo "$(echo $GITHUB_REF | sed 's/refs\/tags\///')"
           TAG=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
-          echo "$(git branch --contains tags/$TAG)"
+          echo "$(git log -1 --format='%D' $TAG)"
