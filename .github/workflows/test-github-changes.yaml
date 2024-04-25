@@ -1,0 +1,35 @@
+name: Test Github Changes
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  get_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+          fetch-depth: 0
+
+      - id: get_changes
+        name: Test Github Changes
+        run: |
+          before=$(jq --raw-output .before "$GITHUB_EVENT_PATH")
+          after=$(jq --raw-output .after "$GITHUB_EVENT_PATH")
+          cat "$GITHUB_EVENT_PATH"
+          echo "Before: $before"
+          echo "After: $after"
+          git tag
+          if [ "$before" == "$after" ]; then
+            echo "No changes in this push"
+            exit 0
+          fi
