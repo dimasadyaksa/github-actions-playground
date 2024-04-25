@@ -53,3 +53,6 @@ jobs:
           psql -h localhost -U postgres -d postgres -c "CREATE SCHEMA partman;"
           psql -h localhost -U postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS pg_partman WITH SCHEMA partman;"
           psql -h localhost -U postgres -d postgres -c "\dx+"
+
+
+
