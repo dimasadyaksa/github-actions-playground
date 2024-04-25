@@ -9,6 +9,12 @@ jobs:
   get_branch:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+          fetch-depth: 0
+
       - id: get_branch
         name: Get Branch
         run: |
