@@ -19,4 +19,5 @@ jobs:
         name: Get Branch
         run: |
           echo "$(echo $GITHUB_REF | sed 's/refs\/tags\///')"
-          echo "$(git branch --contains tags/$GITHUB_REF)"
+          TAG=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+          echo "$(git branch --contains tags/$TAG)"
