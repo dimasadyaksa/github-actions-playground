@@ -1,0 +1,28 @@
+name: Get Branch From Tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  get_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+          fetch-depth: 0
+
+      - id: get_branch
+        name: Get Branch
+        run: |
+          before=$(jq --raw-output .before "$GITHUB_EVENT_PATH")
+          after=$(jq --raw-output .after "$GITHUB_EVENT_PATH")
+          echo "Before: $before"
+          echo "After: $after"
+          if [ "$before" == "$after" ]; then
+            echo "No changes in this push"
+            exit 0
+          fi
