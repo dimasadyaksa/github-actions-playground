@@ -28,6 +28,7 @@ jobs:
           cat "$GITHUB_EVENT_PATH"
           echo "Before: $before"
           echo "After: $after"
+          echo "${{ github.event_name }}"
           git tag
           if [ "$before" == "$after" ]; then
             echo "No changes in this push"
